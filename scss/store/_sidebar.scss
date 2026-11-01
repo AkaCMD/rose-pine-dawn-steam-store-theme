@@ -25,12 +25,16 @@ a.game_area_details_specs_ctn:is(:hover, :focus-visible) .label,
     [data-featuretarget="store-sidebar-controller-support-info"]) {
   :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8,
       ._3sRe2CGQBgablPBz9Bc9c2, ._3KAysk4dlhWETa6ixz7V2j,
-      ._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0) {
+      ._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0,
+      .GMZfIVrEZB0-, .TM-gf0Qc-hM-, .gOWLvh1zsGE-,
+      .LtwI-MuOmiI-, ._2Pn7yJB3D4M-) {
     @include theme.surface(overlay, link);
   }
-  :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8):is(:hover, :focus-visible) {
+  :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8,
+      .GMZfIVrEZB0-, .iontxnFO5hk-):is(:hover, :focus-visible) {
     &, :is(._3sRe2CGQBgablPBz9Bc9c2, ._3KAysk4dlhWETa6ixz7V2j,
-        ._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0) {
+        ._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0,
+        .TM-gf0Qc-hM-, .gOWLvh1zsGE-, .LtwI-MuOmiI-, ._2Pn7yJB3D4M-) {
       background: var(--rp-highlight-med) !important;
     }
   }
@@ -41,6 +45,27 @@ a.game_area_details_specs_ctn:is(:hover, :focus-visible) .label,
   :is(._2xmH7agKi37v9kwFHi093S, ._3vt5rw82YhkhWtu5ld9QeP) {
     @include theme.surface(highlight-med, link);
   }
+  /* Personalized controller labels declare their own bright green foreground. */
+  :is(.kMCVIwCpXwE-, .Tu69Vg196Wk-, .d7UCTQDYGFg-) { color: var(--rp-link) !important; }
+  :is(._1jp-rCKW9iQ-, .x8oQENqyJ1s-) { color: var(--rp-secondary) !important; }
+  a._0JhQq90Mrho- { @include theme.surface(highlight-med, link); }
+}
+
+/* Steam Deck compatibility uses a separate gradient and action component. */
+[data-featuretarget="deck-verified-results"] {
+  .z7OUnz8a2LE-, .QvYBOAdgkPk- { color: var(--rp-text) !important; }
+  :is(.-JC2DTwjTLY-, .gBGbg1Aq4kE-) {
+    @include theme.surface(overlay, text);
+  }
+  .S0TPsOpik3c- {
+    @include theme.surface(overlay, link);
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .S0TPsOpik3c-:is(:hover, :focus-visible, .gpfocus) {
+    background: var(--rp-highlight-med) !important;
+  }
+  svg { color: var(--rp-secondary) !important; }
 }
 
 /* React achievements paint a gradient around the card, a separate question

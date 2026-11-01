@@ -8,10 +8,12 @@
   "scripts": {
     "build": "node scripts/build-css.mjs",
     "build:check": "node scripts/build-css.mjs --check",
-    "watch": "sass --watch --no-source-map --no-charset scss:css",
+    "watch": "node scripts/watch-css.mjs",
     "pretest": "npm run build:check",
-    "test": "node --test",
-    "test:coverage": "node scripts/theme-coverage.mjs"
+    "test": "node --test --test-concurrency=1",
+    "test:coverage": "node scripts/theme-coverage.mjs",
+    "check:installation": "node scripts/theme-coverage.mjs --check-installation --strict",
+    "coverage:scenarios": "node scripts/theme-coverage.mjs --list-scenarios"
   },
   "devDependencies": {
     "sass": "1.106.1"

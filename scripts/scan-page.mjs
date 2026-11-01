@@ -1,8 +1,10 @@
 // scanPage is serialized into the selected Steam renderer. It calls the shared
 // color helpers by name; probeExpression injects their source into the eval scope.
 import { rgba, composite } from './color.mjs';
+import { inspectComponents } from './component-probe.mjs';
+import { components, scenarios } from './coverage-catalog.mjs';
 
-export function scanPage(regionDefinitions) {
+export function scanPage(regionDefinitions, componentDefinitions = [], scenarioDefinitions = [], markerNames = []) {
   const styleCache = new WeakMap();
   const style = el => {
     if (!styleCache.has(el)) styleCache.set(el, getComputedStyle(el));
@@ -73,7 +75,21 @@ export function scanPage(regionDefinitions) {
     (region.route && route.includes(region.route)) ||
     (region.titles?.includes(document.title)) ||
     [...document.querySelectorAll(region.selectors)].some(visible)).map(r => r.id);
-  return { visibility: document.visibilityState, viewport: [innerWidth, innerHeight],
+  const componentObservations = inspectComponents(componentDefinitions, scenarioDefinitions, { visible, style, locator });
+  const markers = Object.fromEntries(markerNames.map(name => [name, style(document.documentElement).getPropertyValue(name).trim().replace(/^"|"$/g, '')]));
+  const urls = [...(document.styleSheets ?? [])].map(sheet => sheet.href).filter(Boolean);
+  if (typeof performance !== 'undefined') urls.push(...performance.getEntriesByType('resource').map(entry => entry.name));
+  const resources = [];
+  for (const value of new Set(urls)) {
+    try {
+      const url = new URL(value);
+      if (url.protocol !== 'https:' || !(url.hostname.endsWith('.steamstatic.com') || url.hostname === 'store.steampowered.com')) continue;
+      if (!/\.(?:css|m?js)$/.test(url.pathname)) continue;
+      const version = url.searchParams.get('contenthash') ?? url.searchParams.get('v');
+      if (version && /^[a-zA-Z0-9_.-]{1,128}$/.test(version)) resources.push({ path: url.origin + url.pathname, version });
+    } catch {}
+  }
+  return { componentObservations, markers, resources, visibility: document.visibilityState, viewport: [innerWidth, innerHeight],
     themeBase: style(document.documentElement).getPropertyValue('--rp-base').trim(),
     regions, totalElements: nodes.length, visibleElements, mediaSkipped, samples,
     limitations: ['Current viewport only; no scrolling or interaction is performed.',
@@ -86,10 +102,11 @@ export function scanPage(regionDefinitions) {
 // Self-contained probe expression for Runtime.evaluate: the shared color helpers
 // are spliced into the eval scope so the renderer runs the exact implementation
 // that classification rules and tests use.
-export function probeExpression(regionDefinitions) {
+export function probeExpression(regionDefinitions, { componentDefinitions = components, scenarioDefinitions = scenarios, markerNames = [] } = {}) {
   return `(() => {
     const rgba = ${rgba.toString()};
     const composite = ${composite.toString()};
-    return (${scanPage.toString()})(${JSON.stringify(regionDefinitions)});
+    const inspectComponents = ${inspectComponents.toString()};
+    return (${scanPage.toString()})(${JSON.stringify(regionDefinitions)}, ${JSON.stringify(componentDefinitions)}, ${JSON.stringify(scenarioDefinitions)}, ${JSON.stringify(markerNames)});
   })()`;
 }

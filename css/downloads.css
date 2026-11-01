@@ -68,3 +68,5 @@
 ._1bq4x9pa4-9RLY-dXWUZTp .DialogButton.Primary :is(div, span, label) {
   color: var(--rp-on-accent) !important;
 }
+
+:root { --rp-build-downloads: "a7f8a2a5a1021dc6fefb71ca474282abac3b1bd9f51be5fe0f3e0419132078c6"; }

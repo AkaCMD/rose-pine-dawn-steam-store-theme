@@ -41,3 +41,5 @@
   --gpBackground-DarkSofter: var(--rp-base);
   --gpBackground-DarkSoft: var(--rp-base);
 }
+
+:root { --rp-build-light: "a69515a17e58512bda20c10217164cd5347adfa12886368a8a92593f4e349e8f"; }

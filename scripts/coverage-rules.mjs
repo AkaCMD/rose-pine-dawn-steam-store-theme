@@ -1,12 +1,21 @@
 import { composite, contrast, luminance } from './color.mjs';
 
-export function classify(sample, allowedBackgrounds) {
+export function classify(sample, allowedBackgrounds, { paletteColors = null } = {}) {
   const issues = [];
   const bg = sample.background;
   if (sample.uncertain) return [{ kind: 'manual-review', reason: sample.uncertain }];
   if (sample.ownBackground && sample.area >= 400 && luminance(bg) < .2 &&
       !allowedBackgrounds.some(c => c.every((v, i) => i === 3 || Math.abs(v - bg[i]) < 2))) {
     issues.push({ kind: 'dark-surface', background: bg });
+  }
+  if (paletteColors) {
+    const known = color => paletteColors.some(allowed => allowed.every((value, i) => i === 3 || Math.abs(value - color[i]) < 2));
+    if (sample.ownBackground && sample.area >= 400 && !known(bg) && !issues.some(issue => issue.kind === 'dark-surface')) {
+      issues.push({ kind: 'off-palette-background', background: bg });
+    }
+    if (sample.hasText && !sample.disabled && sample.foreground[3] > .99 && !known(sample.foreground)) {
+      issues.push({ kind: 'off-palette-text', foreground: sample.foreground });
+    }
   }
   if (sample.hasText && !sample.disabled) {
     const ratio = contrast(composite(sample.foreground, bg), bg);

@@ -2,41 +2,58 @@
 
 /* Product-page curator referrals and React announcement cards. */
 .referring_curator,
-[data-featuretarget="events-row"] .OtherEvents_EventCtn {
+:is([data-featuretarget="events-row"], .early_access_announcements) .OtherEvents_EventCtn {
   @include theme.surface(surface, text);
   border-color: var(--rp-line) !important;
   box-shadow: none !important;
 }
 .referring_curator .blurb,
 .referring_curator .blurb p,
-[data-featuretarget="events-row"] :is(._2jc1DpJ_WzFtigRh5qDWce, .ENbI1gFgvIca6HSKAbfiJ) {
+:is([data-featuretarget="events-row"], .early_access_announcements) :is(._2jc1DpJ_WzFtigRh5qDWce, .ENbI1gFgvIca6HSKAbfiJ,
+    .v2ki0uInhRU-, .FNsnxK3tYRI-, .AYD-9JVfXTU-, .v2ki0uInhRU- > ._6lXwKbKQRZM-) {
   color: var(--rp-text) !important;
   text-shadow: none !important;
 }
 .referring_curator :is(.referringSteamCurator, .curator_review_date, .referring_curator_note),
-[data-featuretarget="events-row"] .HZ6b2d4r4EFnT_1BeU5vo {
+:is([data-featuretarget="events-row"], .early_access_announcements) .HZ6b2d4r4EFnT_1BeU5vo {
   color: var(--rp-secondary) !important;
 }
 .referring_curator :is(a, .review_title),
-[data-featuretarget="events-row"] :is(._2BWwVF5N-3fDuJRblB6gHb, ._11JXznGoylLSEmZXZbgcsq) {
+:is([data-featuretarget="events-row"], .early_access_announcements) :is(._2BWwVF5N-3fDuJRblB6gHb, ._11JXznGoylLSEmZXZbgcsq, .mjoUDFuJ0D8-) {
   color: var(--rp-link) !important;
 }
 .referring_curator .color_not_recommended { color: var(--rp-negative) !important; }
 .referring_curator .color_informational { color: var(--rp-link) !important; }
 .referring_curator .readmore_button_ctn > span,
-[data-featuretarget="events-row"] ._3n8swQFM3I_ARVM_5bPhAs {
+:is([data-featuretarget="events-row"], .early_access_announcements) :is(._3n8swQFM3I_ARVM_5bPhAs, .d-5nAi7tljQ-, .We7gZuKDOiI-) {
   @include theme.surface(overlay, link);
   border-color: var(--rp-line) !important;
   text-shadow: none !important;
 }
 .referring_curator .readmore_button_ctn > span:hover,
-[data-featuretarget="events-row"] ._3n8swQFM3I_ARVM_5bPhAs:is(:hover, :focus-visible) {
+:is([data-featuretarget="events-row"], .early_access_announcements) :is(._3n8swQFM3I_ARVM_5bPhAs, .d-5nAi7tljQ-, .We7gZuKDOiI-):is(:hover, :focus-visible) {
   background: var(--rp-highlight-med) !important;
+  border-color: var(--rp-line) !important;
 }
 /* This layer paints a separate image/gradient behind the card content. */
-[data-featuretarget="events-row"] ._2pPj9UWoWM6h318uBN0-8X {
+:is([data-featuretarget="events-row"], .early_access_announcements) :is(._2pPj9UWoWM6h318uBN0-8X, .bVbljBZi-wU-) {
   background: transparent !important;
 }
-[data-featuretarget="events-row"] .OtherEvents_EventCtn:is(:hover, :focus-visible) {
+:is([data-featuretarget="events-row"], .early_access_announcements) .OtherEvents_EventCtn:is(:hover, :focus-visible) {
   background: var(--rp-overlay) !important;
+}
+/* The October event layout owns another surface above the artwork on hover.
+   Keep its hidden copy transparent until Steam reveals it. */
+:is([data-featuretarget="events-row"], .early_access_announcements) .OtherEvents_EventCtn:hover .WVCDoL13yGg- {
+  background: var(--rp-surface) !important;
+}
+:is([data-featuretarget="events-row"], .early_access_announcements) .OtherEvents_EventCtn:hover .WVCDoL13yGg- ._6lXwKbKQRZM- {
+  color: var(--rp-text) !important;
+  text-shadow: none !important;
+}
+:is([data-featuretarget="events-row"], .early_access_announcements) .OtherEvents_EventCtn:hover .WVCDoL13yGg- ._5IGBtrxnWJ0- {
+  color: var(--rp-link) !important;
+}
+:is([data-featuretarget="events-row"], .early_access_announcements) .kS9Vogo9VDE- svg {
+  fill: var(--rp-link) !important;
 }

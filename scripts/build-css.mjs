@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { compile } from 'sass';
+import { buildMarker } from './theme-assets.mjs';
 
 const root = new URL('../', import.meta.url);
 const check = process.argv.includes('--check');
@@ -12,7 +13,8 @@ const stylesheets = paths.map(path => {
   if (!/^css\/[\w-]+\.css$/.test(path)) throw new Error(`Unsupported CSS output: ${path}`);
   const source = new URL(path.replace(/^css\//, 'scss/').replace(/\.css$/, '.scss'), root);
   const { css } = compile(fileURLToPath(source), { style: 'expanded', charset: false });
-  return { path, css: `${css}\n` };
+  const body = `${css}\n`;
+  return { path, css: body + buildMarker(path, body) };
 });
 
 if (!check) await mkdir(new URL('css/', root), { recursive: true });

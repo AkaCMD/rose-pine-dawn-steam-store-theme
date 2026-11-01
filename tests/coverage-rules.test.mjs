@@ -47,3 +47,12 @@ test('empty, hidden, unthemed and failed pages cannot satisfy regional coverage'
   assert.equal(summarize([{ ...p, manualReview: [{}] }], '#faf4ed')[0].status, '需人工复核');
   assert.equal(summarize([{ ...p, findings: [{}] }], '#faf4ed')[0].status, '疑似遗漏');
 });
+
+test('palette audit catches readable native blue and green colors independently of contrast', () => {
+  const colors = [cream, pine, [70, 66, 97, 1]];
+  const blue = { ...sample, background: [26, 159, 255, 1], hasText: false };
+  assert.ok(classify(blue, colors, { paletteColors: colors }).some(issue => issue.kind === 'off-palette-background'));
+  const green = { ...sample, foreground: [0, 100, 0, 1] };
+  assert.ok(contrast(green.foreground, cream) > 4.5);
+  assert.ok(classify(green, colors, { paletteColors: colors }).some(issue => issue.kind === 'off-palette-text'));
+});

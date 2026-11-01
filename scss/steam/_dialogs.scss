@@ -58,3 +58,48 @@ button:disabled, .DialogButton.Disabled { opacity: .5 !important; }
 :is([role="switch"][aria-checked="true"], input[type="checkbox"]:checked) {
   accent-color: var(--rp-iris); background-color: var(--rp-iris);
 }
+
+/* The install modal owns fixed pale labels and a separate blue drive selector. */
+._3wtPUBfilFITcl1s4u6A7T {
+  :is(._1_JaK7j-59AgDKQOOOJVBA, .DialogToggle_Label) {
+    color: var(--rp-text) !important;
+    text-shadow: none !important;
+  }
+  :is(.NtxG7ioEuQKxrtXEy57H5, .I_nktXyVJHrZEc6dPTTnU) {
+    color: var(--rp-secondary) !important;
+  }
+  .Oo5JPcEk_erKEYAzYp2nY {
+    @include theme.surface(overlay, text);
+    box-shadow: none !important;
+    &:is(:hover, :focus, :focus-visible, ._2-svusNL8L22pzjYeV4GMS) {
+      background: var(--rp-highlight-med) !important;
+    }
+    &.gkgG-dWgjpwS_aqlcMNTM {
+      @include theme.surface(accent, on-accent);
+    }
+    :is(._2vs_5hKYSMZTn7dKHTim5D, ._3a3KjxO7NqnVAjxtVypiCk,
+        ._1p727K-lt5u7dR3PbUTcNZ, ._VEHWl9XgUCHDV7oGKSW4) {
+      color: inherit !important;
+    }
+    &:not(.gkgG-dWgjpwS_aqlcMNTM) :is(.bhL5Q352pNmO44_JjKZTX, ._3WMFKYH3gPd8T5RGPjpUah) {
+      color: var(--rp-negative) !important;
+    }
+  }
+  .WonjNtnAq8aOefGl_x2v4,
+  .WonjNtnAq8aOefGl_x2v4 span {
+    color: var(--rp-negative) !important;
+  }
+  .DialogCheckbox {
+    @include theme.surface(base, text);
+    border: 1px solid var(--rp-secondary) !important;
+    box-shadow: none !important;
+  }
+  .DialogCheckbox_Container:is(:hover, :focus, :focus-visible) .DialogCheckbox:not(.Active):not(.Disabled) {
+    background: var(--rp-highlight-med) !important;
+  }
+  .DialogCheckbox.Active {
+    @include theme.surface(accent, on-accent);
+    border-color: var(--rp-accent) !important;
+    .SVGIcon_DialogCheck path { stroke: var(--rp-on-accent) !important; }
+  }
+}

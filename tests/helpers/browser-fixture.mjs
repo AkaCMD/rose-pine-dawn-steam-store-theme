@@ -61,11 +61,21 @@ export async function withBrowserFixture({
         await client.call('CSS.forcePseudoState', { nodeId, forcedPseudoClasses: pseudoClasses });
       }
     };
+    const hover = async selector => {
+      const point = await evaluate(`(() => { const e=document.querySelector(${JSON.stringify(selector)}); if(!e) throw Error('Missing hover target'); const r=e.getBoundingClientRect(); return {x:r.x+r.width/2,y:r.y+r.height/2}; })()`);
+      await client.call('Page.bringToFront');
+      await client.call('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 0, y: 0 });
+      await client.call('Input.dispatchMouseEvent', { type: 'mouseMoved', ...point });
+    };
+    const pressTab = async () => {
+      await client.call('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+      await client.call('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+    };
     const screenshot = async () => {
       const { data } = await client.call('Page.captureScreenshot', { format: 'png' });
       return data;
     };
-    return await scenario({ evaluate, addStyles, forcePseudoState, screenshot });
+    return await scenario({ evaluate, addStyles, forcePseudoState, screenshot, hover, pressTab, targetId: target.id, endpoint });
   } catch (error) {
     failure = error;
     throw error;

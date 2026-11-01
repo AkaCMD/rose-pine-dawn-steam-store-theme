@@ -95,11 +95,11 @@ npm run build
 npm test
 ```
 
-Edit the Sass sources in [`scss/`](scss/) and commit both the sources and generated files in `css/`. The six entry points match the CSS files loaded by [`skin.json`](skin.json). Run `npm run watch` while editing or `npm run build:check` to verify generated CSS without writing files.
+Edit the Sass sources in [`scss/`](scss/) and commit both the sources and generated files in `css/`. The six entry points match the CSS files loaded by [`skin.json`](skin.json). Run `npm run watch` while editing or `npm run build:check` to verify generated CSS without writing files. Both build modes include per-file runtime version markers.
 
 The `steam/` and `store/` entry points preserve module order because later rules override earlier ones. Shared colors live in [`scss/shared/_tokens.scss`](scss/shared/_tokens.scss), checked against [`palette.json`](palette.json). Keep the runtime `--rp-*` properties when adding rules.
 
-With Steam's local CEF debugging endpoint available, `npm run test:coverage` reports suspected theme gaps and unverified regions. See the [coverage testing guide](docs/theme-coverage.md) for capture instructions and limitations, and the [coverage glossary](CONTEXT.md) for terminology.
+Run `npm run check:installation` to compare the installed manifest and CSS with this checkout. With Steam's local CEF debugging endpoint available, `npm run test:coverage` checks component selectors, computed colors, runtime build markers, and observed interaction states. `npm run coverage:scenarios` lists the checklist; unobserved states remain unchecked. See the [coverage testing guide](docs/theme-coverage.md) for capture instructions and limitations, and the [coverage glossary](CONTEXT.md) for terminology.
 
 </details>
 

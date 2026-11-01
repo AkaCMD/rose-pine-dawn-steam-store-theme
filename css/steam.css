@@ -308,6 +308,55 @@ button:disabled, .DialogButton.Disabled {
   background-color: var(--rp-iris);
 }
 
+/* The install modal owns fixed pale labels and a separate blue drive selector. */
+._3wtPUBfilFITcl1s4u6A7T :is(._1_JaK7j-59AgDKQOOOJVBA, .DialogToggle_Label) {
+  color: var(--rp-text) !important;
+  text-shadow: none !important;
+}
+._3wtPUBfilFITcl1s4u6A7T :is(.NtxG7ioEuQKxrtXEy57H5, .I_nktXyVJHrZEc6dPTTnU) {
+  color: var(--rp-secondary) !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .Oo5JPcEk_erKEYAzYp2nY {
+  background: var(--rp-overlay) !important;
+  color: var(--rp-text) !important;
+  box-shadow: none !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .Oo5JPcEk_erKEYAzYp2nY:is(:hover, :focus, :focus-visible, ._2-svusNL8L22pzjYeV4GMS) {
+  background: var(--rp-highlight-med) !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .Oo5JPcEk_erKEYAzYp2nY.gkgG-dWgjpwS_aqlcMNTM {
+  background: var(--rp-accent) !important;
+  color: var(--rp-on-accent) !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .Oo5JPcEk_erKEYAzYp2nY :is(._2vs_5hKYSMZTn7dKHTim5D, ._3a3KjxO7NqnVAjxtVypiCk,
+._1p727K-lt5u7dR3PbUTcNZ, ._VEHWl9XgUCHDV7oGKSW4) {
+  color: inherit !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .Oo5JPcEk_erKEYAzYp2nY:not(.gkgG-dWgjpwS_aqlcMNTM) :is(.bhL5Q352pNmO44_JjKZTX, ._3WMFKYH3gPd8T5RGPjpUah) {
+  color: var(--rp-negative) !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .WonjNtnAq8aOefGl_x2v4,
+._3wtPUBfilFITcl1s4u6A7T .WonjNtnAq8aOefGl_x2v4 span {
+  color: var(--rp-negative) !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox {
+  background: var(--rp-base) !important;
+  color: var(--rp-text) !important;
+  border: 1px solid var(--rp-secondary) !important;
+  box-shadow: none !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox_Container:is(:hover, :focus, :focus-visible) .DialogCheckbox:not(.Active):not(.Disabled) {
+  background: var(--rp-highlight-med) !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox.Active {
+  background: var(--rp-accent) !important;
+  color: var(--rp-on-accent) !important;
+  border-color: var(--rp-accent) !important;
+}
+._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox.Active .SVGIcon_DialogCheck path {
+  stroke: var(--rp-on-accent) !important;
+}
+
 /* Friends and chat. */
 :is(.friendsui-container, .friendlist, .friendListHeaderContainer, .friendlistListContainer,
 .chatWindow, .chatRoom, .chatEntry, .chatHistoryScroll, .friendGroup,
@@ -1058,3 +1107,5 @@ button:disabled, .DialogButton.Disabled {
 .friendsui-container :is(.preHorizDivider, .horizDivider) {
   background: var(--rp-highlight-med) !important;
 }
+
+:root { --rp-build-steam: "28471c0c8496828b529852b1035b4cd8c7f0745dd538ce9b9d8654617e014c2e"; }

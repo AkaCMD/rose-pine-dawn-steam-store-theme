@@ -49,9 +49,10 @@ function scriptedTransport(targets, scenes = {}) {
             },
           };
           try {
-            const value = runInNewContext(expression, {
-              document, location: new URL('https://store.steampowered.com/'),
-              innerWidth: 1280, innerHeight: 800,
+            const value = await runInNewContext(expression, {
+              document, URL, location: new URL('https://store.steampowered.com/'),
+              performance: { getEntriesByType() { return scene.resources ?? []; } },
+              innerWidth: 1280, innerHeight: 800, requestAnimationFrame: callback => callback(),
               getComputedStyle() { return { getPropertyValue() { return '#faf4ed'; } }; },
             }, { timeout: 1000 });
             return { result: { value: structuredClone(value) } };
@@ -126,7 +127,7 @@ test('continues after connection, transport, renderer, and close failures while 
   assert.equal(pages[4].visibility, 'visible');
 });
 
-test('preview uses manifest order once per CSS path, hashes the injected CSS, and removes it on success and scan failure', async t => {
+test('preview uses manifest cascade order including repeated CSS paths, hashes the injected CSS, and removes it on success and scan failure', async t => {
   const root = await temporaryDirectory(t);
   const first = ':root { --example: "quoted"; }', second = 'body { color: red; }';
   await writeFile(join(root, 'first.css'), first);
@@ -137,7 +138,7 @@ test('preview uses manifest order once per CSS path, hashes the injected CSS, an
   const transport = scriptedTransport([pageTarget('healthy'), pageTarget('broken'), pageTarget('last')],
     { broken: { scanError: 'scan failed' } });
   const { pages, previewCssSha256 } = await capturePages({ preview: true, root }, transport);
-  const expectedCss = `${second}\n${first}`;
+  const expectedCss = `${second}\n${first}\n${second}`;
   assert.deepEqual(transport.inserted, [expectedCss, expectedCss, expectedCss]);
   assert.equal(transport.remaining.size, 0);
   assert.deepEqual(transport.closed, ['healthy', 'broken', 'last']);
@@ -197,4 +198,17 @@ test('CLI keeps report output, state labels, and exit codes 0, 1, and 2', async 
   await assert.rejects(run(process.execPath, [...args, '--strict'], { timeout: 10000 }), error => error.code === 1);
   await assert.rejects(run(process.execPath, [cli.pathname, '--endpoint', 'https://127.0.0.1:8080'],
     { timeout: 10000 }), error => error.code === 2 && /Use a loopback HTTP CDP endpoint/.test(error.stderr));
+});
+
+
+test('resource fingerprints retain public script versions without query credentials or API URLs', async () => {
+  const transport = scriptedTransport([pageTarget('resources')], { resources: { resources: [
+    { name: 'https://store.akamai.steamstatic.com/assets/main.js?contenthash=revision&token=secret#session' },
+    { name: 'https://store.steampowered.com/account/api?v=secret' },
+    { name: 'https://other.invalid/main.js?v=secret' },
+    { name: 'https://store.akamai.steamstatic.com/main.css?v=not%2Fallowed' },
+  ] } });
+  const { pages } = await capturePages({}, transport);
+  assert.deepEqual(pages[0].resources, [{ path: 'https://store.akamai.steamstatic.com/assets/main.js', version: 'revision' }]);
+  assert.doesNotMatch(JSON.stringify(pages), /secret|token|session|account/);
 });

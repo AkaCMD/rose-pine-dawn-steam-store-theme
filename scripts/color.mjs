@@ -1,6 +1,8 @@
 // Shared color math for classification rules, the serialized page probe and tests.
 // One definition: the probe embeds these sources so the renderer and Node agree.
 export function rgba(value) {
+  const hex = value.trim().match(/^#([a-f\d]{6})([a-f\d]{2})?$/i);
+  if (hex) return [...hex[1].match(/../g).map(c => parseInt(c, 16)), hex[2] ? parseInt(hex[2], 16) / 255 : 1];
   const m = value.match(/^rgba?\(([^)]+)\)$/);
   if (!m) return null;
   const parts = m[1].split(/[,\s/]+/).filter(Boolean).map(Number);

@@ -394,3 +394,5 @@
 :is(._2l416KfEtI4CL0mCUEmOBw, ._3FmxxjyWNHU1PrBGnBe6tm) :is(._1WdC0YUP8FT0dYWZ-QIVZL, ._3oMUSjOFNB0E9LWcL2sE7) :is(div, span, label, b, strong, em) {
   color: var(--rp-on-accent) !important;
 }
+
+:root { --rp-build-library-game: "c375a8573c23d51f53b523754100ab9d6ac17ad365fbe07884c874712e9fce7c"; }

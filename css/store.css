@@ -1057,7 +1057,7 @@ body.newonsteam) :not(._1tOSyFfIWM42bIEwzvMp8v, ._1tOSyFfIWM42bIEwzvMp8v *,
 
 /* Product-page curator referrals and React announcement cards. */
 .referring_curator,
-[data-featuretarget=events-row] .OtherEvents_EventCtn {
+:is([data-featuretarget=events-row], .early_access_announcements) .OtherEvents_EventCtn {
   background: var(--rp-surface) !important;
   color: var(--rp-text) !important;
   border-color: var(--rp-line) !important;
@@ -1066,18 +1066,19 @@ body.newonsteam) :not(._1tOSyFfIWM42bIEwzvMp8v, ._1tOSyFfIWM42bIEwzvMp8v *,
 
 .referring_curator .blurb,
 .referring_curator .blurb p,
-[data-featuretarget=events-row] :is(._2jc1DpJ_WzFtigRh5qDWce, .ENbI1gFgvIca6HSKAbfiJ) {
+:is([data-featuretarget=events-row], .early_access_announcements) :is(._2jc1DpJ_WzFtigRh5qDWce, .ENbI1gFgvIca6HSKAbfiJ,
+.v2ki0uInhRU-, .FNsnxK3tYRI-, .AYD-9JVfXTU-, .v2ki0uInhRU- > ._6lXwKbKQRZM-) {
   color: var(--rp-text) !important;
   text-shadow: none !important;
 }
 
 .referring_curator :is(.referringSteamCurator, .curator_review_date, .referring_curator_note),
-[data-featuretarget=events-row] .HZ6b2d4r4EFnT_1BeU5vo {
+:is([data-featuretarget=events-row], .early_access_announcements) .HZ6b2d4r4EFnT_1BeU5vo {
   color: var(--rp-secondary) !important;
 }
 
 .referring_curator :is(a, .review_title),
-[data-featuretarget=events-row] :is(._2BWwVF5N-3fDuJRblB6gHb, ._11JXznGoylLSEmZXZbgcsq) {
+:is([data-featuretarget=events-row], .early_access_announcements) :is(._2BWwVF5N-3fDuJRblB6gHb, ._11JXznGoylLSEmZXZbgcsq, .mjoUDFuJ0D8-) {
   color: var(--rp-link) !important;
 }
 
@@ -1090,7 +1091,7 @@ body.newonsteam) :not(._1tOSyFfIWM42bIEwzvMp8v, ._1tOSyFfIWM42bIEwzvMp8v *,
 }
 
 .referring_curator .readmore_button_ctn > span,
-[data-featuretarget=events-row] ._3n8swQFM3I_ARVM_5bPhAs {
+:is([data-featuretarget=events-row], .early_access_announcements) :is(._3n8swQFM3I_ARVM_5bPhAs, .d-5nAi7tljQ-, .We7gZuKDOiI-) {
   background: var(--rp-overlay) !important;
   color: var(--rp-link) !important;
   border-color: var(--rp-line) !important;
@@ -1098,17 +1099,37 @@ body.newonsteam) :not(._1tOSyFfIWM42bIEwzvMp8v, ._1tOSyFfIWM42bIEwzvMp8v *,
 }
 
 .referring_curator .readmore_button_ctn > span:hover,
-[data-featuretarget=events-row] ._3n8swQFM3I_ARVM_5bPhAs:is(:hover, :focus-visible) {
+:is([data-featuretarget=events-row], .early_access_announcements) :is(._3n8swQFM3I_ARVM_5bPhAs, .d-5nAi7tljQ-, .We7gZuKDOiI-):is(:hover, :focus-visible) {
   background: var(--rp-highlight-med) !important;
+  border-color: var(--rp-line) !important;
 }
 
 /* This layer paints a separate image/gradient behind the card content. */
-[data-featuretarget=events-row] ._2pPj9UWoWM6h318uBN0-8X {
+:is([data-featuretarget=events-row], .early_access_announcements) :is(._2pPj9UWoWM6h318uBN0-8X, .bVbljBZi-wU-) {
   background: transparent !important;
 }
 
-[data-featuretarget=events-row] .OtherEvents_EventCtn:is(:hover, :focus-visible) {
+:is([data-featuretarget=events-row], .early_access_announcements) .OtherEvents_EventCtn:is(:hover, :focus-visible) {
   background: var(--rp-overlay) !important;
+}
+
+/* The October event layout owns another surface above the artwork on hover.
+   Keep its hidden copy transparent until Steam reveals it. */
+:is([data-featuretarget=events-row], .early_access_announcements) .OtherEvents_EventCtn:hover .WVCDoL13yGg- {
+  background: var(--rp-surface) !important;
+}
+
+:is([data-featuretarget=events-row], .early_access_announcements) .OtherEvents_EventCtn:hover .WVCDoL13yGg- ._6lXwKbKQRZM- {
+  color: var(--rp-text) !important;
+  text-shadow: none !important;
+}
+
+:is([data-featuretarget=events-row], .early_access_announcements) .OtherEvents_EventCtn:hover .WVCDoL13yGg- ._5IGBtrxnWJ0- {
+  color: var(--rp-link) !important;
+}
+
+:is([data-featuretarget=events-row], .early_access_announcements) .kS9Vogo9VDE- svg {
+  fill: var(--rp-link) !important;
 }
 
 /* Product sidebar: legacy feature rows and their React replacements. */
@@ -1141,14 +1162,19 @@ a.game_area_details_specs_ctn:is(:hover, :focus-visible) .label,
 :is([data-featuretarget=store-sidebar-accessibility-info],
 [data-featuretarget=store-sidebar-controller-support-info]) :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8,
 ._3sRe2CGQBgablPBz9Bc9c2, ._3KAysk4dlhWETa6ixz7V2j,
-._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0) {
+._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0,
+.GMZfIVrEZB0-, .TM-gf0Qc-hM-, .gOWLvh1zsGE-,
+.LtwI-MuOmiI-, ._2Pn7yJB3D4M-) {
   background: var(--rp-overlay) !important;
   color: var(--rp-link) !important;
 }
 :is([data-featuretarget=store-sidebar-accessibility-info],
-[data-featuretarget=store-sidebar-controller-support-info]) :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8):is(:hover, :focus-visible), :is([data-featuretarget=store-sidebar-accessibility-info],
-[data-featuretarget=store-sidebar-controller-support-info]) :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8):is(:hover, :focus-visible) :is(._3sRe2CGQBgablPBz9Bc9c2, ._3KAysk4dlhWETa6ixz7V2j,
-._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0) {
+[data-featuretarget=store-sidebar-controller-support-info]) :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8,
+.GMZfIVrEZB0-, .iontxnFO5hk-):is(:hover, :focus-visible), :is([data-featuretarget=store-sidebar-accessibility-info],
+[data-featuretarget=store-sidebar-controller-support-info]) :is(summary, ._1RmibngWLogcFmO93kGFgq, ._2xZaMR-NKc0LbkeM50cZq8,
+.GMZfIVrEZB0-, .iontxnFO5hk-):is(:hover, :focus-visible) :is(._3sRe2CGQBgablPBz9Bc9c2, ._3KAysk4dlhWETa6ixz7V2j,
+._29jQMo9DGCmcSKyDIC3V7M, .dxuI55RF56-dzbuXjj2W0,
+.TM-gf0Qc-hM-, .gOWLvh1zsGE-, .LtwI-MuOmiI-, ._2Pn7yJB3D4M-) {
   background: var(--rp-highlight-med) !important;
 }
 :is([data-featuretarget=store-sidebar-accessibility-info],
@@ -1163,6 +1189,44 @@ a.game_area_details_specs_ctn:is(:hover, :focus-visible) .label,
 [data-featuretarget=store-sidebar-controller-support-info]) :is(._2xmH7agKi37v9kwFHi093S, ._3vt5rw82YhkhWtu5ld9QeP) {
   background: var(--rp-highlight-med) !important;
   color: var(--rp-link) !important;
+}
+:is([data-featuretarget=store-sidebar-accessibility-info],
+[data-featuretarget=store-sidebar-controller-support-info]) {
+  /* Personalized controller labels declare their own bright green foreground. */
+}
+:is([data-featuretarget=store-sidebar-accessibility-info],
+[data-featuretarget=store-sidebar-controller-support-info]) :is(.kMCVIwCpXwE-, .Tu69Vg196Wk-, .d7UCTQDYGFg-) {
+  color: var(--rp-link) !important;
+}
+:is([data-featuretarget=store-sidebar-accessibility-info],
+[data-featuretarget=store-sidebar-controller-support-info]) :is(._1jp-rCKW9iQ-, .x8oQENqyJ1s-) {
+  color: var(--rp-secondary) !important;
+}
+:is([data-featuretarget=store-sidebar-accessibility-info],
+[data-featuretarget=store-sidebar-controller-support-info]) a._0JhQq90Mrho- {
+  background: var(--rp-highlight-med) !important;
+  color: var(--rp-link) !important;
+}
+
+/* Steam Deck compatibility uses a separate gradient and action component. */
+[data-featuretarget=deck-verified-results] .z7OUnz8a2LE-, [data-featuretarget=deck-verified-results] .QvYBOAdgkPk- {
+  color: var(--rp-text) !important;
+}
+[data-featuretarget=deck-verified-results] :is(.-JC2DTwjTLY-, .gBGbg1Aq4kE-) {
+  background: var(--rp-overlay) !important;
+  color: var(--rp-text) !important;
+}
+[data-featuretarget=deck-verified-results] .S0TPsOpik3c- {
+  background: var(--rp-overlay) !important;
+  color: var(--rp-link) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+[data-featuretarget=deck-verified-results] .S0TPsOpik3c-:is(:hover, :focus-visible, .gpfocus) {
+  background: var(--rp-highlight-med) !important;
+}
+[data-featuretarget=deck-verified-results] svg {
+  color: var(--rp-secondary) !important;
 }
 
 /* React achievements paint a gradient around the card, a separate question
@@ -1199,3 +1263,5 @@ a.communitylink_achivement_plusmore:is(:hover, :focus-visible) {
 .game_area_details_specs_ctn .tooltip img {
   filter: brightness(0) saturate(100%) invert(35%) sepia(18%) saturate(1471%) hue-rotate(151deg) brightness(93%) contrast(89%);
 }
+
+:root { --rp-build-store: "9ea193be9a85847b4bf5d9e3099593b948f60a46ab9247d11601ddf0bd1532f1"; }

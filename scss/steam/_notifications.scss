@@ -28,6 +28,22 @@
 }
 ._1OOQPJx0nCNP9ME9toCmV7::before { background: none !important; }
 ._1OOQPJx0nCNP9ME9toCmV7 ._3RkGkNRNheAkoRA3migph5 { opacity: .08 !important; }
+/* Achievement toasts set their own white labels rather than inheriting the shell. */
+.mJ3Nu2ja1CSqf_qU1GD_b ._1juF1NbXeVbg06v1506lgi,
+.fntOoeLPSTpmyXGGmgf99 ._18PwvOcpWfW3M8j2-bEPPJ {
+  color: var(--rp-text) !important;
+}
+.mJ3Nu2ja1CSqf_qU1GD_b :is(._2zm3GcVDieR0YsBNy6jQmX, ._35FNy1MhQxGVCALPuR6FH3),
+.fntOoeLPSTpmyXGGmgf99 ._2jpxEWvo06efD6-NR1cplA {
+  color: var(--rp-secondary) !important;
+}
+.fntOoeLPSTpmyXGGmgf99 {
+  @include theme.surface(surface, text);
+  box-shadow: none !important;
+}
+.fntOoeLPSTpmyXGGmgf99:hover {
+  background: var(--rp-highlight-med) !important;
+}
 ._1xvIUtLkTrdEk2Ob1MqFcQ,
 ._3Ak7cNRtzpDWtFgnn6n0-J {
   @include theme.surface(overlay, text);

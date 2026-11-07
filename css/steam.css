@@ -309,7 +309,7 @@ button:disabled, .DialogButton.Disabled {
 }
 
 /* The install modal owns fixed pale labels and a separate blue drive selector. */
-._3wtPUBfilFITcl1s4u6A7T :is(._1_JaK7j-59AgDKQOOOJVBA, .DialogToggle_Label) {
+._3wtPUBfilFITcl1s4u6A7T ._1_JaK7j-59AgDKQOOOJVBA {
   color: var(--rp-text) !important;
   text-shadow: none !important;
 }
@@ -339,22 +339,96 @@ button:disabled, .DialogButton.Disabled {
 ._3wtPUBfilFITcl1s4u6A7T .WonjNtnAq8aOefGl_x2v4 span {
   color: var(--rp-negative) !important;
 }
-._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox {
+
+/* Installation shortcuts and remembered launch options use the same custom checkbox. */
+:is(._3wtPUBfilFITcl1s4u6A7T, .LclHwcOfHFpwObYMD1HLa) .DialogToggle_Label {
+  color: var(--rp-text) !important;
+  text-shadow: none !important;
+}
+:is(._3wtPUBfilFITcl1s4u6A7T, .LclHwcOfHFpwObYMD1HLa) .DialogCheckbox {
   background: var(--rp-base) !important;
   color: var(--rp-text) !important;
   border: 1px solid var(--rp-secondary) !important;
   box-shadow: none !important;
 }
-._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox_Container:is(:hover, :focus, :focus-visible) .DialogCheckbox:not(.Active):not(.Disabled) {
+:is(._3wtPUBfilFITcl1s4u6A7T, .LclHwcOfHFpwObYMD1HLa) .DialogCheckbox_Container:is(:hover, :focus, :focus-visible) .DialogCheckbox:not(.Active):not(.Disabled) {
   background: var(--rp-highlight-med) !important;
 }
-._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox.Active {
+:is(._3wtPUBfilFITcl1s4u6A7T, .LclHwcOfHFpwObYMD1HLa) .DialogCheckbox.Active {
   background: var(--rp-accent) !important;
   color: var(--rp-on-accent) !important;
   border-color: var(--rp-accent) !important;
 }
-._3wtPUBfilFITcl1s4u6A7T .DialogCheckbox.Active .SVGIcon_DialogCheck path {
+:is(._3wtPUBfilFITcl1s4u6A7T, .LclHwcOfHFpwObYMD1HLa) .DialogCheckbox.Active .SVGIcon_DialogCheck path {
   stroke: var(--rp-on-accent) !important;
+}
+
+/* The desktop launch options popup has its own panel and buttons. */
+.LclHwcOfHFpwObYMD1HLa {
+  background: var(--rp-surface) !important;
+  color: var(--rp-text) !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._3T-1PliI6PkKE-bE-o3bV0 {
+  color: var(--rp-text) !important;
+}
+.LclHwcOfHFpwObYMD1HLa :is(.EvZ7kwlROeKkDzxBu2TfH, .HSQN4Dc7pEbtuyr1LP-5v) {
+  color: var(--rp-secondary) !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._134yW7SKfZYwmvwlUElGx- {
+  background: var(--rp-base) !important;
+  border-color: var(--rp-line) !important;
+  box-shadow: none !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._3DEhfTvEKwgLd4smd6QdaU {
+  background: var(--rp-overlay) !important;
+  color: var(--rp-text) !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._3DEhfTvEKwgLd4smd6QdaU:is(:hover, :focus-within, :has(input:checked)) {
+  background: var(--rp-highlight-med) !important;
+}
+.LclHwcOfHFpwObYMD1HLa :is(._3EWVuoln1WAvpEaPNfpift, ._1d8CbcBnA6t3lsxYdnMv1h) {
+  border-radius: 6px !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._3EWVuoln1WAvpEaPNfpift {
+  background: var(--rp-accent) !important;
+  color: var(--rp-on-accent) !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._3EWVuoln1WAvpEaPNfpift:is(:hover, :active, :focus-visible) {
+  background: var(--rp-link) !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._1d8CbcBnA6t3lsxYdnMv1h {
+  background: var(--rp-overlay) !important;
+  color: var(--rp-text) !important;
+}
+.LclHwcOfHFpwObYMD1HLa ._1d8CbcBnA6t3lsxYdnMv1h:is(:hover, :active, :focus-visible) {
+  background: var(--rp-highlight-med) !important;
+}
+
+/* The launch wait popup reuses the library status panel beside the game's cover. */
+._2KQRlxOL0nH2Mx4tAGxQQr :is(._20PFwr9na9AT4Lz00IdtVQ, ._1sKdg4-6_xRyPxMt0eRvaf) {
+  color: var(--rp-text) !important;
+}
+._2KQRlxOL0nH2Mx4tAGxQQr :is(._2Ylu2Lki0Y2s452Fh--tiE, ._2pGX3XXztz624QfCJElgkR) {
+  color: var(--rp-secondary) !important;
+}
+._2KQRlxOL0nH2Mx4tAGxQQr ._25YVDTaClw6Y2COPsU0UaV {
+  background-color: var(--rp-highlight-med) !important;
+}
+._2KQRlxOL0nH2Mx4tAGxQQr ._25YVDTaClw6Y2COPsU0UaV ._1FnTqlsi2_-TJf1d5apoS6 {
+  background-color: var(--rp-accent) !important;
+}
+
+.PopupFullWindow:has(:is(.LclHwcOfHFpwObYMD1HLa, ._2KQRlxOL0nH2Mx4tAGxQQr)) .ModalPosition_TopBar {
+  background: var(--rp-accent) !important;
+}
+.PopupFullWindow:has(:is(.LclHwcOfHFpwObYMD1HLa, ._2KQRlxOL0nH2Mx4tAGxQQr)) .closeButton .SVGIcon_X_Line line {
+  stroke: var(--rp-secondary) !important;
+}
+.PopupFullWindow:has(:is(.LclHwcOfHFpwObYMD1HLa, ._2KQRlxOL0nH2Mx4tAGxQQr)) .closeButton:is(:hover, :focus-visible) {
+  background: var(--rp-highlight-med) !important;
+}
+.PopupFullWindow:has(:is(.LclHwcOfHFpwObYMD1HLa, ._2KQRlxOL0nH2Mx4tAGxQQr)) .closeButton:is(:hover, :focus-visible) .SVGIcon_X_Line line {
+  stroke: var(--rp-text) !important;
 }
 
 /* Friends and chat. */
@@ -1108,4 +1182,4 @@ button:disabled, .DialogButton.Disabled {
   background: var(--rp-highlight-med) !important;
 }
 
-:root { --rp-build-steam: "28471c0c8496828b529852b1035b4cd8c7f0745dd538ce9b9d8654617e014c2e"; }
+:root { --rp-build-steam: "73bd86121f29d1854a76ddfb464b8e50786b35c890b08b03c5515ae53e9d7ca5"; }
